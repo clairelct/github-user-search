@@ -6,18 +6,16 @@ import Card from "./components/Card";
 import Logo from "./components/Logo";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState();
   const [userInput, setUserInput] = useState("");
   const [totalCount, setTotalCount] = useState(0);
   const [errorLimit, setErrorLimit] = useState(false);
   const [errorNotFound, setErrorNotFound] = useState(false);
 
+  // FETCH DATA
   useEffect(() => {
     if (userInput.length > 1) {
-      // https://stackoverflow.com/questions/38235715/fetch-reject-promise-and-catch-the-error-if-status-is-not-ok
-      // https://blog.webdevsimplified.com/2020-10/react-debounce/
-
+      // Use debounce to minimize rate limit issues
       const timeout = setTimeout(() => {
         fetch(`https://api.github.com/search/users?q=${userInput}`, {
           headers: {
@@ -25,8 +23,8 @@ function App() {
           },
         })
           .then((response) => {
-            // Handle errors (403)
-            // Assuming code 403 might be rate limit issue
+            // Handle errors
+            // Assuming code 403 might be 'rate limit' issue
             if (response.ok) {
               return response.json();
             } else {
@@ -37,11 +35,10 @@ function App() {
           })
           .then((responseJson) => {
             // Access the data
-            console.log("responseJson : ", responseJson);
+            //console.log("responseJson : ", responseJson);
             if (responseJson && responseJson.total_count !== 0) {
               setUsers(responseJson.items.slice(0, 12));
               setTotalCount(responseJson.total_count);
-              setIsLoading(false);
             } else {
               setErrorNotFound(true);
             }
@@ -53,13 +50,14 @@ function App() {
 
       return () => clearTimeout(timeout);
     }
-
+    // Reset data if input is empty
     if (userInput.length <= 1) {
       setUsers([]);
       setTotalCount(0);
     }
   }, [userInput]);
 
+  // REMOVE ERROR MESSAGES after 3.5s
   useEffect(() => {
     setTimeout(() => {
       setErrorLimit(false);

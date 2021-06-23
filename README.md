@@ -4,8 +4,16 @@
 
 ## Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-A searchbar to display users from Github. <br />
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br />
+A searchbar to display users, by querying against [Github API](https://api.github.com/): `https://api.github.com/search/users?q={USER}`. <br />
+
+## Github Api
+
+Requires a basic authentication with [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+```
+$ curl -u username:token https://api.github.com/user
+```
 
 ## Running the project
 
