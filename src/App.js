@@ -60,16 +60,17 @@ function App() {
 
   // REMOVE ERROR MESSAGES after 3.5s
   useEffect(() => {
+    setTotalCount(0);
     setTimeout(() => {
       setErrorLimit(false);
     }, 3500);
   }, [errorLimit]);
 
   useEffect(() => {
+    setTotalCount(0);
     setTimeout(() => {
       setErrorNotFound(false);
     }, 3500);
-    setTotalCount(0);
   }, [errorNotFound]);
 
   return (
