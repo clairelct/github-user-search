@@ -9,11 +9,20 @@ A searchbar to display users, by querying against [Github API](https://api.githu
 
 ## Github Api
 
-Requires a basic authentication with [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+#### Generate an access token
+
+Github API requires a basic authentication with [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ```
 $ curl -u username:token https://api.github.com/user
 ```
+
+#### Add your token within the CRA project
+
+1. Create a **.env.development** file in the root of your project <br/>
+2. Add `REACT_APP_GITHUB_TOKEN=your access token`
+
+_Note: If you've already launch the project with `yarn start` before adding the env value, you may need to restart project ;-)_
 
 ## Running the project
 

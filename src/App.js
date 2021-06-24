@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import ViewEmpty from "./components/ViewEmpty";
 import ViewUsers from "./components/ViewUsers";
-import Card from "./components/Card";
 import Logo from "./components/Logo";
 const REACT_APP_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
