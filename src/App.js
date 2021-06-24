@@ -4,7 +4,7 @@ import ViewEmpty from "./components/ViewEmpty";
 import ViewUsers from "./components/ViewUsers";
 import Card from "./components/Card";
 import Logo from "./components/Logo";
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const REACT_APP_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 function App() {
   const [users, setUsers] = useState();
@@ -20,7 +20,7 @@ function App() {
       const timeout = setTimeout(() => {
         fetch(`https://api.github.com/search/users?q=${userInput}`, {
           headers: {
-            authorization: `token ${GITHUB_TOKEN}`,
+            authorization: `token ${REACT_APP_GITHUB_TOKEN}`,
           },
         })
           .then((response) => {
