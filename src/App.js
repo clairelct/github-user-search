@@ -4,6 +4,7 @@ import ViewEmpty from "./components/ViewEmpty";
 import ViewUsers from "./components/ViewUsers";
 import Card from "./components/Card";
 import Logo from "./components/Logo";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 function App() {
   const [users, setUsers] = useState();
@@ -19,7 +20,7 @@ function App() {
       const timeout = setTimeout(() => {
         fetch(`https://api.github.com/search/users?q=${userInput}`, {
           headers: {
-            authorization: "token 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",
+            authorization: `token ${GITHUB_TOKEN}`,
           },
         })
           .then((response) => {
