@@ -11,7 +11,7 @@ const Card = ({ user }) => {
       {/* Right column */}
       <div className="col-content">
         <p className="user-login">{user.login}</p>
-        <a className="button" href={user.html_url} target="_blank">
+        <a className="button" href={user.html_url} target="_blank" rel="noreferrer">
           See Github profile
         </a>
       </div>
