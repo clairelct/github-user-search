@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Header from "./components/Header";
 import ViewEmpty from "./components/ViewEmpty";
 import ViewUsers from "./components/ViewUsers";
-import Logo from "./components/Logo";
 const REACT_APP_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 function App() {
@@ -75,20 +75,11 @@ function App() {
   return (
     <main>
       <div className="container">
-        <header>
-          <Logo />
-          <h1>Github User Search</h1>
-          <input
-            type="search"
-            id="user-search"
-            name="user-search"
-            value={userInput}
-            onChange={(event) => {
-              setUserInput(event.target.value);
-              setErrorLimit(false);
-            }}
-          />
-        </header>
+        <Header
+          userInput={userInput}
+          setUserInput={setUserInput}
+          setErrorLimit={setErrorLimit}
+        />
 
         <section>
           {users && users.length > 0 ? (
